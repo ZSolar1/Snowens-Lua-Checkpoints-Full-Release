@@ -19,7 +19,7 @@ until the next checkpoint. Maybe we could make this bar customizable.
 Please send Suggestions where this script is posted!
 ## [IF YOU NEED HELP]
 Please contact ZSolarDev(zsolar1) at the page where this script is posted. The pages this script is posted will contain some sort of methed
-to talk to ZSolarDev(such as comments or talking in the discussion post in the Psych Ward.)
+to talk to ZSolarDev(such as gamebanana comments, making an issue in the github, or talking in the discussion post in the Psych Ward.)
 ## [FEATURES]
 1. checkpoints (obviously)
 2. The ability to alter the image that shows up/sound that plays when a checkpoint is hit.
