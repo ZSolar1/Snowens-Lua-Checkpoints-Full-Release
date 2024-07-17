@@ -1,4 +1,7 @@
 # Snowens Lua Checkpoints, Full Release! (V1)
+Ever need checkpoints in a song, but don't know how to code? I think your in the right place.
+Instructions on how to use this script are in the script itself with things to remeber, examples,
+context, and descriptions. (This took 4 days to make, I hope you like it.)
 ## [CREDITS]
 Snowen/sn0wenx: half-Save data functionality (It was very broken, I(ZSolarDev) had to spend so long fixing it :<)
 
