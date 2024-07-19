@@ -2,6 +2,7 @@
 Ever need checkpoints in a song, but don't know how to code? I think your in the right place.
 Instructions on how to use this script are in the script itself with things to remember, examples,
 context, and descriptions. (This took 6 days to make, I hope you like it.)
+![](https://github.com/ZSolar1/Snowens-Lua-Checkpoints-Full-Release/blob/main/Preview.gif)
 ## [CREDITS]
 Snowen/sn0wenx: half-Save data functionality (It was very broken, I had to spend so long fixing it :<)
 
@@ -29,3 +30,4 @@ to talk to ZSolarDev(such as gamebanana comments, making an issue in the github,
 4. Ability to reset health when a checkpoint is hit.
 5. A screen at the start of your song asking if the player wants to wipe all of their checkpoints.
 6. A debug mode if you want to snoop around the script a bit (The checkpoint reset screen is enabled by default if debug mode is on)
+![](https://github.com/ZSolar1/Snowens-Lua-Checkpoints-Full-Release/blob/main/Slc%20logo%20v2.png)
