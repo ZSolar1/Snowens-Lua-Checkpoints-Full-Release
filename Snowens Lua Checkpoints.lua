@@ -68,8 +68,8 @@ a checkpoint. (the way I had worded it before didnt make sense.) a sound will al
 --[(Important when writing the paths)]--
 dont add the following: "images/", "sounds/", ".png", ".ogg", "mods/".
 ]]--
-colorCheckpointImg = true -- do you want the checkpoint image to have a custom color?
-checkpointImgColor = getColor('Blue') -- If so, whats the color of the checkpoint image? (You can type the color name of the hex code.)
+colorCheckpointImg = false -- do you want the checkpoint image to have a custom color?
+checkpointImgColor = getColor('') -- If so, whats the color of the checkpoint image? (You can type the color name of the hex code.)
 --[[
 
 --[(Description of getColor)]--
@@ -81,7 +81,7 @@ just replace the whole "getColor('color goes here')" with the hex code of your c
 ]]--
 checkpointImgScreenTime = 1.5 -- How many seconds does it take for the checkpoint image to go on and off the screen?
 ----[CUSTOM CHECKPOINT HIT EFFECT]----
-customCheckpointHitEffect = true -- Do you not want an image to show up once a checkpoint is reached?
+customCheckpointHitEffect = false -- Do you not want an image to show up once a checkpoint is reached?
 --[[
 
 --[(Description of customCheckpointHitEffect)]--
@@ -172,7 +172,7 @@ end
 function onCreatePost()
     makeLuaSprite("checkpointImg", checkpointImgPath, 0, 0)
     screenCenter("checkpointImg", y)
-    setProperty("checkpointImg.x", getProperty("checkpointImg.width") * 2)
+    setProperty("checkpointImg.x", getProperty("checkpointImg.width") * 3.5)
     setObjectCamera("checkpointImg", 'hud')
     addLuaSprite("checkpointImg", true)
     if colorCheckpointImg then
@@ -193,8 +193,11 @@ end
 
 function onSongStart()
     songStarted = true
-    onCheckpointRespawn()
-    if curCheckpoint ~= 0 and not disableCheckpoints then
+    if getDataFromSave('songProgress'..songName, 'checkpointHit') ~= nil then
+        checkpointHit = getDataFromSave('songProgress'..songName, 'checkpointHit')
+    end
+    if checkpointHit then
+        onCheckpointRespawn()
         funy = minSecToMilliseconds(checkpoints[curCheckpoint])
         setSongTime(funy)
         setProperty('camGame.zoom', getProperty("defaultCamZoom"))
@@ -311,7 +314,7 @@ function onTweenCompleted(tag, vars)
         runTimer('checkpointImgExit', checkpointImgScreenTime/3)
     end
     if tag == 'checkpointImgExitScreen' then
-        setProperty('checkpointImg.x', getProperty("checkpointImg.width") * 2)
+        setProperty('checkpointImg.x', getProperty("checkpointImg.width") * 3.5)
     end
 end
 
@@ -359,7 +362,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         setProperty('songMisses', getDataFromSave('songProgress'..songName, 'missSave'))
     end
     if tag == 'checkpointImgExit' then
-        doTweenX('checkpointImgExitScreen', 'checkpointImg', -(getProperty("checkpointImg.width") * 2), checkpointImgScreenTime/3, 'circIn')
+        doTweenX('checkpointImgExitScreen', 'checkpointImg', -(getProperty("checkpointImg.width") * 3.5), checkpointImgScreenTime/3, 'circIn')
     end
 end
 
@@ -429,7 +432,6 @@ function onCheckpointRespawn()
 	setProperty('ratingName', getDataFromSave('songProgress'..songName, 'ratingName'))
 	setProperty('ratingFC', getDataFromSave('songProgress'..songName, 'ratingFC'))
     curCheckpoint = getDataFromSave('songProgress'..songName, 'checkpoint')
-    checkpointHit = getDataFromSave('songProgress'..songName, 'checkpointHit')
     if debugMode then
         debugPrint('Defaults have been set.')
     end
